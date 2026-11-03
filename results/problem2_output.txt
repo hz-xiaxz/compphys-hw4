@@ -1,0 +1,66 @@
+units: r_s = 1e-7 x 100 pc -> M_BH = 1.045e+08 Msun; velocity unit 67.04 km/s; time unit 1.4586 Myr
+
+(a) Kepler orbit without friction, r_apo = 1, r_peri = r_s
+    v0 = 2.236068e-04 (= 4.472e-04 v_c), e = 0.99999980, period T = 4.442884
+    pericentre speed 2236.1, pericentre passage time r_s/v_p = 4.5e-11
+    delta = 1e-06:    706 steps/orbit; after 10 orbits dE/E = -5.5e-02, dL/L = -1.2e-06, r_apo - 1 = -4.4e-01, r_peri/r_s - 1 in [-2.3e-06, -1.3e-07], mean period error +1.9e-01
+    delta = 1e-07:   1236 steps/orbit; after 10 orbits dE/E = -3.4e-03, dL/L = -8.2e-08, r_apo - 1 = +1.8e-03, r_peri/r_s - 1 in [-1.6e-07, -8.7e-09], mean period error +1.1e-02
+    delta = 1e-08:   2177 steps/orbit; after 10 orbits dE/E = -2.0e-04, dL/L = -5.5e-09, r_apo - 1 = +1.9e-04, r_peri/r_s - 1 in [-1.1e-08, -5.4e-10], mean period error +6.6e-04
+    delta = 1e-09:   3851 steps/orbit; after 10 orbits dE/E = -1.1e-05, dL/L = -3.6e-10, r_apo - 1 = +1.1e-05, r_peri/r_s - 1 in [-7.0e-10, -3.7e-11], mean period error +3.8e-05
+    delta = 1e-10:   6830 steps/orbit; after 10 orbits dE/E = -5.5e-07, dL/L = -2.3e-11, r_apo - 1 = +5.5e-07, r_peri/r_s - 1 in [-4.4e-11, -2.4e-12], mean period error +1.6e-06
+    delta = 1e-11:  12343 steps/orbit; after 10 orbits dE/E = +2.2e-07, dL/L = -1.9e-12, r_apo - 1 = -2.2e-07, r_peri/r_s - 1 in [-3.7e-12, -2.4e-13], mean period error -1.1e-06
+    delta = 1e-12: the step size falls below the spacing of doubles near t = 2.2214 (reason 3), so delta >~ 1e-11 is the round-off floor
+    -> delta = 1e-10: over 10 orbits the energy changes by 6e-07 and r_peri by 4e-11 (relative)
+
+(b) A = B = 1, v0 = 0.8 v_c
+    reached r_s at t = 10.755646 = 15.69 Myr after 135999 steps and 30 pericentre passages
+    pericentre  1: t =  3.2182, r_p = 8.674e-04, L = 2.080e-02, E = -0.5784
+    pericentre  5: t =  5.7642, r_p = 2.554e-05, L = 3.573e-03, E = -1.2520
+    pericentre 10: t =  7.3061, r_p = 3.919e-06, L = 1.400e-03, E = -1.7079
+    pericentre 20: t =  9.2541, r_p = 4.499e-07, L = 4.743e-04, E = -2.3098
+    pericentre 30: t = 10.6349, r_p = 1.083e-07, L = 2.327e-04, E = -2.7465
+    check: delta = 1e-09 gives t = 10.755649 (+2.5e-07)
+    check: delta = 1e-11 gives t = 10.755646 (-1.7e-08)
+
+(c) grid of A, B in [0.5, 10], v0 = 0.8 v_c
+    144 runs in 44 s
+    B/A =  0.086:  3 runs, t =   15.858..  15.875 (spread  0.1%), pericentres 0..0
+    B/A =  0.113:  4 runs, t =   12.265..  12.289 (spread  0.2%), pericentres 0..0
+    B/A =  0.149:  5 runs, t =    9.568..   9.599 (spread  0.3%), pericentres 0..0
+    B/A =  0.195:  6 runs, t =    7.560..   7.598 (spread  0.5%), pericentres 0..0
+    B/A =  0.256:  7 runs, t =    6.082..   6.125 (spread  0.7%), pericentres 0..0
+    B/A =  0.336:  8 runs, t =    5.012..   5.059 (spread  0.9%), pericentres 0..0
+    B/A =  0.442:  9 runs, t =    4.257..   4.306 (spread  1.1%), pericentres 0..0
+    B/A =  0.580: 10 runs, t =    4.690..   5.524 (spread 17.8%), pericentres 3..3
+    B/A =  0.762: 11 runs, t =    6.585..   8.130 (spread 23.5%), pericentres 11..25
+    B/A =  1.000: 12 runs, t =    9.197..  11.512 (spread 25.2%), pericentres 23..87
+    B/A =  1.313: 11 runs, t =   12.779..  15.574 (spread 21.9%), pericentres 45..186
+    B/A =  1.724: 10 runs, t =   17.516..  20.772 (spread 18.6%), pericentres 82..335
+    B/A =  2.264:  9 runs, t =   23.872..  27.506 (spread 15.2%), pericentres 145..561
+    B/A =  2.972:  8 runs, t =   32.424..  36.354 (spread 12.1%), pericentres 255..906
+    B/A =  3.903:  7 runs, t =   43.983..  48.066 (spread  9.3%), pericentres 451..1434
+    B/A =  5.125:  6 runs, t =   59.550..  63.657 (spread  6.9%), pericentres 806..2225
+    B/A =  6.729:  5 runs, t =   80.400..  84.416 (spread  5.0%), pericentres 1451..3376
+    B/A =  8.835:  4 runs, t =  108.144.. 111.896 (spread  3.5%), pericentres 2608..4998
+    B/A = 11.601:  3 runs, t =  144.824.. 147.979 (spread  2.2%), pericentres 4639..7214
+    shortest: t = 4.257 (6.2 Myr) at B/A = 0.442; longest: t = 256.2 (374 Myr) at B/A = 20.0
+    overdamped limit (4/3) A/B vs measured for B/A < 0.1: 15.47/15.86, 20.31/20.62, 15.47/15.87, 26.67/26.91, 20.31/20.63, 15.47/15.88
+    weak-friction runs (B/A > 4): t / (B/A) = 11.62..12.81, geometric mean 12.33
+    check A = 0.5, B = 10.0: delta 1e-10 -> 256.2271, 1e-9 -> 256.2239 (-1.2e-05)
+
+(d) dependence on v0 and on A, B separately
+    v0/v_c      0.10    0.20    0.30    0.40    0.50    0.60    0.70    0.80    0.90    1.00    1.10    1.20    1.30
+    A= 2.5 B= 0.5    7.34    7.34    7.35    7.36    7.37    7.38    7.39    7.41    7.43    7.45    7.48    7.51    7.55
+    A=10.0 B= 2.0    7.38    7.38    7.39    7.40    7.41    7.42    7.43    7.44    7.46    7.48    7.50    7.53    7.56
+    A= 0.5 B= 0.5    7.64    9.11    9.85   10.32   10.76   11.00   11.44   11.51   11.78   11.90   12.04   12.03   12.05
+    A=10.0 B=10.0    6.18    7.13    7.76    8.19    8.52    8.81    9.02    9.20    9.33    9.45    9.54    9.60    9.66
+    A= 0.5 B= 2.5   38.28   44.87   49.01   52.26   55.04   57.54   59.90   62.07   63.84   64.83   64.84   63.89   62.39
+    A= 2.0 B=10.0   35.28   41.37   45.31   48.41   51.09   53.56   55.87   57.94   59.61   60.56   60.60   59.81   58.52
+    B/A = 0.2: A = 10.0 vs 2.5 changes t by +0.1% to +0.5%
+    B/A = 1.0: A = 10.0 vs 0.5 changes t by -21.8% to -19.1%
+    B/A = 5.0: A = 2.0 vs 0.5 changes t by -7.9% to -6.2%
+    B/A = 0.2: A from 0.5 to 10 at fixed ratio -> t = 7.42, 7.43, 7.44, 7.44
+    B/A = 1.0: A from 0.5 to 10 at fixed ratio -> t = 11.51, 11.16, 10.74, 10.38, 10.06, 9.81, 9.59, 9.38, 9.20
+    B/A = 5.0: A from 0.5 to 10 at fixed ratio -> t = 62.07, 60.76, 59.62, 58.60
+
+wrote figs/problem2a_tolerance.png, problem2b_orbit.png, problem2c_ratio.png, problem2d_v0.png

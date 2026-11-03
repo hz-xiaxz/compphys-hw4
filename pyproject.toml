@@ -1,0 +1,11 @@
+[project]
+name = "compphys-hw4"
+version = "0.1.0"
+description = "Computational Physics Homework 4: Brusselator (Newman 8.18) and SMBH binary with dynamical friction"
+requires-python = ">=3.11"
+dependencies = [
+    "matplotlib>=3.9",
+    "numba>=0.60",
+    "numpy>=2.0",
+    "scienceplots>=2.1",
+]
